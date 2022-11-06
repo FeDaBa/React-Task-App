@@ -1,39 +1,38 @@
-import { useState } from 'react'
+import { useState } from "react";
 
-const TaskCreator = ({createNewTask}) => {
+const TaskCreator = ({ createNewTask }) => {
+  const [newTaskName, setNewTaskName] = useState("");
 
-    const [newTaskName, setNewTaskName] = useState('')
-
-    const handleSubmit = (e) => {
-
-      if (newTaskName.trim() === ''){
-        alert("Please enter a task name")
-        return
-      }
-
-      e.preventDefault()
-      createNewTask(newTaskName)
-      setNewTaskName('')
-      
+  const handleSubmit = (e) => {
+    if (newTaskName.trim() === "") {
+      alert("Please enter a task name");
+      return;
     }
 
+    e.preventDefault();
+    createNewTask(newTaskName);
+    setNewTaskName("");
+  };
+
   return (
-
-    <form onSubmit={handleSubmit}>
-
-        <input 
-            type="text"
-            placeholder="Enter a new task"
-            onChange={(e) => setNewTaskName(e.target.value)}
+    <form className="my-2 row" onSubmit={handleSubmit}>
+      <div className="col-9">
+        <input
+          type="text"
+          className="form-control"
+          value={newTaskName}
+          onChange={(e) => setNewTaskName(e.target.value)}
+          placeholder="Enter a new task..."
+          autoFocus
         />
-
-        <button>
-            Save task
+      </div>
+      <div className="col-3 p-0 d-flex align-items-center">
+        <button className="btn btn-primary btn-sm" type="submit">
+          Save Task
         </button>
-
+      </div>
     </form>
-
-  )
+  );
 }
 
 export default TaskCreator
