@@ -35,7 +35,7 @@ function App() {
   };
 
   return (
-    <main className="bg-dark vh-100 text-white">
+    <main className="bg-dark vh-100 vw-100 text-white">
       <Container>
         <TaskCreator createNewTask={createNewTask} />
         <TaskTable tasks={taskItems} toggleTask={toggleTask} />
