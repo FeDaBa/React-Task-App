@@ -5,11 +5,16 @@ const TaskCreator = ({createNewTask}) => {
     const [newTaskName, setNewTaskName] = useState('')
 
     const handleSubmit = (e) => {
+
+      if (newTaskName.trim() === ''){
+        alert("Please enter a task name")
+        return
+      }
+
       e.preventDefault()
       createNewTask(newTaskName)
-      localStorage.setItem('tasks', newTaskName)
-      value={newTaskName}
       setNewTaskName('')
+      
     }
 
   return (
